@@ -13,21 +13,35 @@
 
 /*Kyle addition - make all custom post types show on archives pages. Found on http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/ */
 function namespace_add_custom_types( $query ) {
-  if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
-    $query->set( 'post_type', array(
-     'post', 'nav_menu_item', 'veteran', 'testimonial', 'event', 'video'
-		));
-	  return $query;
+
+	if ( ! $query->is_main_query() ) {
+
+		return;
+	}
+
+	if ( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'post_type', array(
+			'post',
+			'nav_menu_item',
+			'veteran',
+			'testimonial',
+			'event',
+			'video'
+		) );
+
+		return $query;
 	}
 }
+
 add_filter( 'pre_get_posts', 'namespace_add_custom_types' );
 
 /*Kyle addition - make all custom post types included in search. Found in the comments on http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/ */
 // Define what post types to search
 function searchAll( $query ) {
 	if ( $query->is_search ) {
-		$query->set( 'post_type', array( 'post', 'page', 'feed', 'testimonial', 'event', 'video', 'veteran'));
+		$query->set( 'post_type', array( 'post', 'page', 'feed', 'testimonial', 'event', 'video', 'veteran' ) );
 	}
+
 	return $query;
 }
 
@@ -37,9 +51,9 @@ add_filter( 'the_search_query', 'searchAll' );
 /*Kyle addition - add custom post template selector to CPTs */
 function my_cpt_post_types( $post_types ) {
 
-    $post_types[] = 'veteran';
+	$post_types[] = 'veteran';
 
-    return $post_types;
+	return $post_types;
 
 }
 

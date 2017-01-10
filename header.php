@@ -57,13 +57,8 @@
         <div id="highlights">	  
              
         	<h3><?php _e('Upcoming events', 'woothemes'); ?> &gt;</h3>
-            <?php 
-            global $wpdb;
-            $resulting = $wpdb->get_var("SELECT term_id FROM $wpdb->terms WHERE name = '$highlights_tag'");
-            $term_id = (int)$resulting;
-            ?>
-            
-            <?php if ($term_id) { ?><span class="more"><a href="<?php echo get_tag_link($term_id); ?>"><?php _e('More Events', 'woothemes'); ?></a></span><?php } ?>            
+
+            <span class="more"><a href="/events/"><?php _e('More Events', 'woothemes'); ?></a></span><
             <div class="fix"></div>
             
          	<?php 

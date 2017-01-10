@@ -9,6 +9,8 @@
 /* End WooThemes Functions - You can add custom functions below */
 /*-----------------------------------------------------------------------------------*/
 
+/*Joel addition - miniloops pagination, comon now */
+
 /*Kyle addition - make all custom post types show on archives pages. Found on http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/ */
 function namespace_add_custom_types( $query ) {
   if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {

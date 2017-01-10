@@ -1,0 +1,14 @@
+/*
+Theme Name:     CHILDlmww2-The-Journal
+Description:    Child theme for Larry Martin\'s WWII website.
+Author:         Kyle
+Template:       thejournal
+
+(optional values you can add: Theme URI, Author URI, Version)
+*/
+
+@import url("../thejournal/style.css");
+
+#highlights .post {
+width: 31%;
+}
